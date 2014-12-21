@@ -1,0 +1,39 @@
+/* Copyright (c) 2012, Code Aurora Forum. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&soc {
+	i2c@f9923000{
+		melfas_mms136@48 {
+			compatible = "melfas,mms136";
+			reg = <0x48>;
+			interrupt-parent = <&msmgpio>;
+			interrupts = <0 0x0>;
+			vdd-supply = <&pm8110_l19>;
+			vcc_i2c-supply = <&pm8110_l14>;
+			melfas,i2c_int_gpio = <&msmgpio 0 0x00>;
+			melfas,i2c_sda_gpio = <2>;
+			melfas,i2c_scl_gpio = <3>;
+			melfas,i2c-pull-up = <1>;
+			melfas,auto_fw_update = <1>;
+			melfas,enalbe_active_mode = <0>;
+			melfas,product = "E4A47A";	
+			melfas,panel-x = <480>;
+			melfas,panel-y = <800>;
+			melfas,fw-image-name = "melfas/w6ds_tim_br/w6ds_tim_br_v003.mfsb";
+			melfas,button-map = <158 172 139 249>;
+			melfas,use_vdd_i2c = <0>;
+			melfas,use_vdd = <0>;
+			melfas,gpio-vdd-en = <82>;
+			status = "ok";
+		};
+	};
+};

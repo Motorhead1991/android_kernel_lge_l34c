@@ -1,0 +1,70 @@
+/* Copyright (c) 2013, LGE Electronics. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&soc {
+	i2c@f9927000 { /* BLSP1 QUP5 */
+		mms100s@48 {
+			melfas,product = "I2S45A";
+			melfas,auto_fw_update = <1>;
+			melfas,use_vdd = <1>;
+			melfas,use_vdd_i2c = <1>;
+			melfas,fw-image-name = "melfas/x3_trf_us/x3_trf_us_rev_a_v06.mfsb";
+			melfas,panel-spec-name = "melfas/x3_trf_us/x3_trf_us_limit.txt";
+			revision = "rev_a";
+			status = "ok";
+		};
+		mms100s_rev_a2@48 {
+			melfas,product = "I2S45A";
+			melfas,auto_fw_update = <1>;
+			melfas,use_vdd = <0>;
+			melfas,use_vdd_i2c = <0>;
+			melfas,gpio-vdd-en = <60>;
+			melfas,fw-image-name = "melfas/x3_trf_us/x3_trf_us_rev_a_v06.mfsb";
+			melfas,panel-spec-name = "melfas/x3_trf_us/x3_trf_us_limit.txt";
+			revision = "rev_a2";
+			status = "ok";
+		};
+
+		lge_touch@48 {
+			lge,product = "I2S45A";
+			lge,fw-image-name = "melfas/x3_trf_us/x3_trf_us_rev_a_v06.mfsb";
+			lge,panel_spec = "melfas/x3_trf_us/x3_trf_us_limit.txt";
+			revision = "rev_a";
+			status = "disable";
+		};
+
+		lge_ts_misc {
+			revision = "rev_a2";
+			vdd_on = <1>;
+			vio_l19_on = <1>;
+			vio_lvs1_on = <1>;
+			irq_wake = <0>;
+			status ="ok";
+		};
+
+		synaptics_red@20 {
+			status = "disable";
+			revision = "rev_b...";
+		};
+
+		synaptics_s220x@20 {
+			status = "ok";
+			revision = "rev_b...";
+			synaptics,platform_data	{
+				/* firmware image depends on this value, temporarily used */
+				/* 0: No image(default), 1: W3DS(TIM BR)(PLG312_T001), 2: W3S(VDF)(PLG311_T001), 3: X3(GLOBAL_COM, TRF_ATT)... */
+				panel_type = <3>;
+				finger_reg_offset = <0>; /*s2202 : 0, s2200 : 1*/
+			};
+		};
+	};
+};
